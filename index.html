@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tandem Tasks - Monolítico</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Gestor de Tareas</h1>
+  <form id="taskForm">
+    <input type="text" id="taskTitle" placeholder="Título" required />
+    <input type="text" id="taskAssignee" placeholder="Responsable" />
+    <input type="date" id="taskDueDate" />
+    <button type="submit">Guardar</button>
+  </form>
+
+  <ul id="taskList"></ul>
+
+  <script src="app.js"></script>
+</body>
+</html>
