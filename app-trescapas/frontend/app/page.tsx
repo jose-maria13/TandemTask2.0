@@ -5,14 +5,14 @@ import TaskForm from './components/TaskForm';
 import TaskItem from './components/TaskItem';
 
 interface Task {
-  id: string;  // MongoDB _id como string
+  id: string;
   title: string;
   assignee: string;
   dueDate: string;
   completed: boolean;
 }
 
-const API_BASE = 'http://localhost:3001/api/tareas'; // Cambia el puerto si usas otro
+const API_BASE = 'http://localhost:3001/api/tareas'; 
 
 export default function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -24,7 +24,7 @@ export default function Home() {
       const res = await fetch(API_BASE);
       if (!res.ok) throw new Error('Error al obtener tareas');
       const data = await res.json();
-      // mapear _id a id
+     
       const mappedTasks = data.map((task: any) => ({
         id: task._id,
         title: task.title,
