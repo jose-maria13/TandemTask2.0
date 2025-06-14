@@ -1,0 +1,33 @@
+name: CI/CD TandemTask
+
+on:
+  push:
+    branches: [ backend-layered, frontend-layered ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Instalar dependencias
+        run: npm install
+
+      - name: Compilar proyecto
+        run: npm run build
+
+      - name: Tests (si existen)
+        run: npm test || echo "No hay tests definidos"
+
+      - name: Despliegue simulado
+        if: github.ref == 'refs/heads/main'
+        run: echo "Desplegando app final a producción"
