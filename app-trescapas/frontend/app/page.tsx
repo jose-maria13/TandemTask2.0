@@ -142,7 +142,7 @@ export default function Home() {
     const updatedTasks = tasks.filter(task => task.id !== id);
     setTasks(updatedTasks);
   } catch (error) {
-    alert(error.message);
+    alert(error instanceof Error ? error.message : 'Error desconocido');
   }
 };
 
