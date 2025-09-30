@@ -126,7 +126,7 @@ export default function Home() {
   };
 
   // Eliminar tarea
- const handleDelete = async (id: number) => {
+ const handleDelete = async (id: string) => {
   const confirmDelete = window.confirm('¿Estás seguro que quieres eliminar esta tarea?');
   if (!confirmDelete) return;
 
