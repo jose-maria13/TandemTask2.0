@@ -12,7 +12,7 @@ interface Task {
   completed: boolean;
 }
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL ? `${process.env.NEXT_PUBLIC_API_URL}/tareas` : 'http://localhost:3001/api/tareas'; 
+const API_BASE = 'http://localhost:3001/api/tareas'; 
 
 export default function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
