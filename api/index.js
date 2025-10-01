@@ -1,7 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const tareaRoutes = require('./app-trescapas/backend/routes/tareaRoutes');
-const authRoutes = require('./app-trescapas/backend/routes/authRoutes');
 
 const app = express();
 
@@ -39,9 +37,48 @@ app.get('/api', (req, res) => {
   });
 });
 
-// Rutas de la API
-app.use('/api/tareas', tareaRoutes);
-app.use('/api/auth', authRoutes);
+// Rutas de la API - Simuladas para testing
+app.get('/api/tareas', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Endpoint de tareas funcionando',
+    data: []
+  });
+});
+
+app.post('/api/tareas', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Tarea creada exitosamente',
+    data: {
+      id: Date.now().toString(),
+      ...req.body,
+      createdAt: new Date()
+    }
+  });
+});
+
+app.get('/api/auth/login', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Endpoint de login funcionando'
+  });
+});
+
+app.post('/api/auth/login', (req, res) => {
+  res.json({
+    success: true,
+    message: 'Login exitoso',
+    data: {
+      token: 'test_token_' + Date.now(),
+      user: {
+        id: '1',
+        name: 'Usuario Test',
+        email: 'test@test.com'
+      }
+    }
+  });
+});
 
 // Middleware para rutas no encontradas
 app.use((req, res) => {
